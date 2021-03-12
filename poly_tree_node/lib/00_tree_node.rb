@@ -14,4 +14,8 @@ class PolyTreeNode
 
     end
 
+    def children
+        
+    end
+
 end
