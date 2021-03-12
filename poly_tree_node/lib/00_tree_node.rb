@@ -35,4 +35,21 @@ class PolyTreeNode
             raise "node is not a child!"
         end
     end
+
+    def dfs(target_value)
+        if target_value == self.value
+            return value
+        else
+            self.children.each do |child|
+               rec_call = child.dfs(target_value)
+               if !rec_call.nil? && child.value == target_value
+                    return child.value
+               elsif !child.children.empty?
+                    child.children.dfs(target_value)
+               end
+            end
+            return nil
+        end
+
+    end
 end
