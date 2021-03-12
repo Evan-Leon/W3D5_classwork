@@ -38,18 +38,21 @@ class PolyTreeNode
 
     def dfs(target_value)
         if target_value == self.value
-            return value
-        else
+            return self
+        elsif !self.children.empty? 
             self.children.each do |child|
-               rec_call = child.dfs(target_value)
-               if !rec_call.nil? && child.value == target_value
-                    return child.value
-               elsif !child.children.empty?
-                    child.children.dfs(target_value)
-               end
+                if child.value == target_value
+                    return child 
+                else  
+                    return child.dfs(target_value)
+                end
+            #    if !rec_call.nil? && child.value == target_value
+            #         return child
+            #    end
             end
+        else  
             return nil
         end
-
+        
     end
 end
